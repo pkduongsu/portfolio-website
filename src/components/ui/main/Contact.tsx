@@ -6,9 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Mail, MapPin, Clock, Send, Github, Linkedin, Twitter, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, Clock, Send, ArrowRight } from 'lucide-react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -109,7 +108,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               rows={6}
-              placeholder="Tell me about your project, ideas, or just say hello..."
+              placeholder=""
               className="bg-card/50 border-border focus:border-primary focus:ring-primary/20 resize-none"
             />
           </div>
@@ -124,7 +123,7 @@ const ContactForm = () => {
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">
                 <div className="w-5 h-5 border-2 border-destructive-foreground/30 border-t-destructive-foreground rounded-full animate-spin" />
-                Sending to Spirit World...
+                Sending...
               </span>
             ) : (
               <span className="flex items-center justify-center gap-2">
@@ -251,7 +250,7 @@ const Contact = () => {
           >
             
             {/* Contact Info */}
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-2xl">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-2xl mt-25">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground flex items-center gap-2 font-ghibli">
                   <span className="text-chart-3">🌟</span>
@@ -265,14 +264,14 @@ const Contact = () => {
                     <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
                       <Mail className="w-4 h-4 text-primary" />
                     </div>
-                    <span>your.email@example.com</span>
+                    <span>kimduong.pham03@gmail.com</span>
                   </div>
                   
                   <div className="flex items-center gap-3 text-muted-foreground">
                     <div className="w-8 h-8 bg-chart-4/20 rounded-full flex items-center justify-center">
                       <MapPin className="w-4 h-4 text-chart-4" />
                     </div>
-                    <span>Your City, Country</span>
+                    <span>Melbourne, VIC, Australia</span>
                   </div>
                   
                   <div className="flex items-center gap-3 text-muted-foreground">
@@ -288,80 +287,14 @@ const Contact = () => {
                 <div>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     I'm always open to discussing new opportunities, interesting projects, 
-                    or just having a chat about the latest in web development. 
+                    or just simply having a chat about the latest updates and breakthrough in AI. 
                     Don't hesitate to reach out!
                   </p>
                 </div>
               </CardContent>
             </Card>
-
-            {/* Social Links */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold text-foreground mb-4 font-ghibli">Connect with me</h3>
-              
-              <div className="space-y-3">
-                <SocialLink
-                  href="https://github.com/yourusername"
-                  label="GitHub"
-                  icon={<Github className="w-6 h-6 text-muted-foreground" />}
-                />
-
-                <SocialLink
-                  href="https://linkedin.com/in/yourusername"
-                  label="LinkedIn"
-                  icon={<Linkedin className="w-6 h-6 text-chart-3" />}
-                />
-
-                <SocialLink
-                  href="https://twitter.com/yourusername"
-                  label="Twitter"
-                  icon={<Twitter className="w-6 h-6 text-chart-3" />}
-                />
-              </div>
-            </div>
           </motion.div>
         </div>
-
-        {/* Call to Action */}
-        <motion.div 
-          className="text-center mt-16"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 0.7 }}
-        >
-          <Card className="bg-gradient-to-r from-destructive/10 to-primary/10 border-destructive/20 max-w-3xl mx-auto">
-            <CardContent className="p-8 text-center">
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <span className="text-3xl">🏮</span>
-                <h3 className="text-2xl font-bold text-foreground font-ghibli">Ready to Start Your Journey?</h3>
-                <span className="text-3xl">🏮</span>
-              </div>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Every great adventure begins with a single step. Whether you have a specific project in mind 
-                or just want to explore possibilities, I'm here to help bring your ideas to life with the same 
-                care and attention to detail that Miyazaki brings to his masterpieces.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg"
-                  className="bg-gradient-to-r from-destructive to-chart-1 hover:from-destructive/80 hover:to-chart-1/80 text-destructive-foreground font-semibold"
-                >
-                  <span className="flex items-center gap-2">
-                    Start a Project
-                    <ArrowRight className="w-5 h-5" />
-                  </span>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold"
-                >
-                  Download Resume
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
 
       {/* Floating Spirit Elements */}
