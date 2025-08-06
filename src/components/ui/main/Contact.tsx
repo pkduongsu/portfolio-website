@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
-import { Mail, MapPin, Clock, Send, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, Clock, Send } from 'lucide-react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +53,7 @@ const ContactForm = () => {
         >
           <div className="text-6xl mb-4 animate-bounce">🎌</div>
           <h3 className="text-2xl font-bold text-foreground mb-2 font-ghibli">Message Sent Successfully!</h3>
-          <p className="text-muted-foreground">Your message has been delivered to the spirit world. I'll respond soon!</p>
+          <p className="text-muted-foreground">Your message has been delivered to the spirit world. I will respond very soon!</p>
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -138,32 +138,6 @@ const ContactForm = () => {
   );
 };
 
-const SocialLink = ({ href, icon, label }: { 
-  href: string; 
-  icon: React.ReactNode; 
-  label: string; 
-}) => (
-  <Card className="group hover:bg-muted/50 transition-all duration-300 transform hover:scale-105">
-    <CardContent className="p-4">
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-3"
-      >
-        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-          {icon}
-        </div>
-        <div className="flex-1">
-          <h4 className="font-semibold text-foreground group-hover:text-foreground transition-colors">{label}</h4>
-          <p className="text-sm text-muted-foreground">Connect with me</p>
-        </div>
-        <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all" />
-      </a>
-    </CardContent>
-  </Card>
-);
-
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -206,12 +180,12 @@ const Contact = () => {
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-6 font-ghibli">
             <span className="bg-gradient-to-r from-destructive via-primary to-chart-1 bg-clip-text text-transparent">
-              Let's Create Magic Together
+              Let&apos; s Create Magic Together
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Whether you're looking to build something amazing or just want to chat about code, 
-            I'm always excited to connect with fellow creators and dreamers.
+            Whether you are looking to build something amazing together, or just want to chat about tech, 
+            I am always excited to connect with fellow creators and learners.
           </p>
           <Separator className="w-24 h-1 bg-gradient-to-r from-destructive to-primary mx-auto" />
         </motion.div>
@@ -232,7 +206,7 @@ const Contact = () => {
                   Send a Message
                 </CardTitle>
                 <p className="text-muted-foreground">
-                  Drop me a line and I'll get back to you as soon as possible
+                  Drop me a line and I will get back to you as soon as possible
                 </p>
               </CardHeader>
               <CardContent>
@@ -286,9 +260,9 @@ const Contact = () => {
 
                 <div>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    I'm always open to discussing new opportunities, interesting projects, 
+                    I&apos;m always open to discussing new opportunities, interesting projects, 
                     or just simply having a chat about the latest updates and breakthrough in AI. 
-                    Don't hesitate to reach out!
+                    Don&apos;t hesitate to reach out!
                   </p>
                 </div>
               </CardContent>
