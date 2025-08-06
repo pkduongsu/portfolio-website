@@ -2,10 +2,41 @@
 
 import { useEffect, useRef } from 'react';
 
+// Vanta.js type definitions
+interface VantaEffect {
+  destroy: () => void;
+}
+
+interface VantaBirdsOptions {
+  el: HTMLElement;
+  mouseControls: boolean;
+  touchControls: boolean;
+  gyroControls: boolean;
+  minHeight: number;
+  minWidth: number;
+  scale: number;
+  scaleMobile: number;
+  backgroundColor: number;
+  color1: number;
+  color2: number;
+  birdSize: number;
+  wingSpan: number;
+  speedLimit: number;
+  separation: number;
+  alignment: number;
+  cohesion: number;
+  quantity: number;
+  opacity: number;
+}
+
+interface VantaModule {
+  BIRDS: (options: VantaBirdsOptions) => VantaEffect;
+}
+
 declare global {
   interface Window {
-    VANTA: any;
-    THREE: any;
+    VANTA: VantaModule;
+    THREE: unknown;
   }
 }
 
@@ -16,7 +47,7 @@ interface VantaBirdsProps {
 
 const VantaBirds: React.FC<VantaBirdsProps> = ({ className = '', children }) => {
   const vantaRef = useRef<HTMLDivElement>(null);
-  const vantaEffect = useRef<any>(null);
+  const vantaEffect = useRef<VantaEffect | null>(null);
 
   useEffect(() => {
     const loadScript = (src: string): Promise<void> => {

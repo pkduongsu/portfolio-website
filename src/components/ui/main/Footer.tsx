@@ -5,14 +5,12 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="text-foreground font-bold text-xl font-ghibli">Kim Pham</span>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Crafting digital experiences with the wonder and attention to detail 
-              inspired by Studio Ghibli's masterpieces.
+              Learning about myself and the world, crafting to give back to the world and grow myself further.
             </p>
           </div>
 
