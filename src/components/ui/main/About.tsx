@@ -34,15 +34,15 @@ const About = () => {
 
   const skills = [
     'React',
-    'Node.js', 
+    'Next.js', 
     'TypeScript',
     'Python',
     'AWS',
-    'MongoDB',
-    'NextJS',
-    'PostgreSQL',
+    'SQL',
     'Docker',
-    'GraphQL'
+    'Azure',
+    'Prisma',
+    'tRPC'
   ];
 
   useEffect(() => {
@@ -287,9 +287,9 @@ const About = () => {
                       <h4 className="text-xl font-semibold text-foreground">Other Magical Abilities</h4>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <h5 className="font-semibold text-chart-3 mb-2">Frontend Magic</h5>
+                          <h5 className="font-semibold text-chart-3 mb-2">Data / ML</h5>
                           <div className="flex flex-wrap gap-2">
-                            {['HTML5', 'CSS3', 'Tailwind', 'Framer Motion', 'Three.js'].map((tech) => (
+                            {['R','Pytorch', 'Tensorflow', 'scikit-learn', 'PowerBI', 'Databricks'].map((tech) => (
                               <Badge key={tech} variant="secondary" className="bg-chart-3/20 text-chart-3 border-chart-3/30">
                                 {tech}
                               </Badge>
@@ -297,9 +297,9 @@ const About = () => {
                           </div>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-primary mb-2">Backend Sorcery</h5>
+                          <h5 className="font-semibold text-primary mb-2">AI/LLMs</h5>
                           <div className="flex flex-wrap gap-2">
-                            {['Express', 'PostgreSQL', 'Redis', 'Docker', 'GraphQL'].map((tech) => (
+                            {['Huggingface', 'transformers', 'Inngest', 'APIs (OpenAI, Gemini)', 'LlamaIndex', 'LangChain', 'LangGraph'].map((tech) => (
                               <Badge key={tech} variant="secondary" className="bg-primary/20 text-primary border-primary/30">
                                 {tech}
                               </Badge>

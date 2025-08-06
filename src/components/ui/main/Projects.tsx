@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { ExternalLink, Github, Star, Filter, Globe, Smartphone, Server } from 'lucide-react';
+import { ExternalLink, Github, Star, Filter, Globe, Bot, Server } from 'lucide-react';
 import { PROJECTS_LIST } from '@/components/ui/constants/projects-list';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const ProjectCard = ({ project, index, isVisible }: { project: Project; index: n
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'web': return <Globe className="w-4 h-4" />;
-      case 'mobile': return <Smartphone className="w-4 h-4" />;
+      case 'ai': return <Bot className="w-4 h-4" />;
       case 'fullstack': return <Server className="w-4 h-4" />;
       default: return <Globe className="w-4 h-4" />;
     }
@@ -142,28 +142,45 @@ const ProjectCard = ({ project, index, isVisible }: { project: Project; index: n
         </CardContent>
 
         <CardFooter className="pt-0">
-          <div className="flex gap-2 w-full">
-            <Button 
-              asChild
-              size="sm" 
-              className="flex-1 bg-gradient-to-r from-primary to-chart-1 hover:from-primary/80 hover:to-chart-1/80 border-0"
-            >
-              <Link href={project.liveUrl}>
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Live Demo
-              </Link>
-            </Button>
-            <Button 
-              asChild
-              size="sm" 
-              variant="outline" 
-              className="border-border text-muted-foreground hover:bg-muted/10"
-            >
-              <Link href={project.githubUrl}>
-                <Github className="w-4 h-4 mr-2" />
-                Code
-              </Link>
-            </Button>
+          <div className="flex gap-2 w-full mt-auto">
+            {project.liveUrl === "" ? (
+              <Button 
+                asChild
+                size="sm" 
+                variant="outline" 
+                className="w-full border-border text-muted-foreground hover:bg-muted/10"
+              >
+                <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4 mr-2" />
+                  Code
+                </Link>
+              </Button>
+            ) : (
+              // Both buttons when live URL exists
+              <>
+                <Button 
+                  asChild
+                  size="sm" 
+                  className="flex-1 bg-gradient-to-r from-primary to-chart-1 hover:from-primary/80 hover:to-chart-1/80 border-0"
+                >
+                  <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Live Demo
+                  </Link>
+                </Button>
+                <Button 
+                  asChild
+                  size="sm" 
+                  variant="outline" 
+                  className="border-border text-muted-foreground hover:bg-muted/10"
+                >
+                  <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Github className="w-4 h-4 mr-2" />
+                    Code
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
         </CardFooter>
 
@@ -187,7 +204,7 @@ const Projects = () => {
     { id: 'all', label: 'All Projects', icon: <Filter className="w-4 h-4" />, count: projects.length },
     { id: 'fullstack', label: 'Full Stack', icon: <Server className="w-4 h-4" />, count: projects.filter(p => p.category === 'fullstack').length },
     { id: 'web', label: 'Web Apps', icon: <Globe className="w-4 h-4" />, count: projects.filter(p => p.category === 'web').length },
-    { id: 'ai', label: 'AI', icon: <Smartphone className="w-4 h-4" />, count: projects.filter(p => p.category === 'ai').length },
+    { id: 'ai', label: 'AI', icon: <Bot className="w-4 h-4" />, count: projects.filter(p => p.category === 'ai').length },
   ];
 
   const filteredProjects = filter === 'all' 
@@ -229,7 +246,7 @@ const Projects = () => {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-            Like the wonders found throughout the spirit world, each project tells a story 
+            Each project tells a story 
             of creativity, problem-solving, and technical mastery.
           </p>
           <Separator className="w-24 h-1 bg-gradient-to-r from-destructive to-primary mx-auto" />
@@ -331,11 +348,14 @@ const Projects = () => {
                 and the latest experiments in the world of code magic.
               </p>
               <Button 
+                asChild
                 size="lg"
                 className="bg-gradient-to-r from-primary to-chart-1 hover:from-primary/80 hover:to-chart-1/80 text-primary-foreground border-0 px-8"
               >
-                <Github className="w-5 h-5 mr-2" />
-                View GitHub Profile
+                <Link href="https://github.com/pkduongsu">
+                  <Github className="w-5 h-5 mr-2" />
+                    View GitHub Profile
+                </Link>
               </Button>
             </CardContent>
           </Card>

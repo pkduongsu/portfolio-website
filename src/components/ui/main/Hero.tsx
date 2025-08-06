@@ -69,7 +69,7 @@ const Hero = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.7 }}
         >
-         <b>Where</b> you get to know who I am, <b>What</b> I am capable of, <b>Why</b> I am passionate about my mission, <b>When</b> you should reach out for my assistance, and <b>How</b> I transform ideas to amazing digital experiences 😊
+         <b>Where</b> you get to know who I am, <b>What</b> I am capable of, <b>Why</b> I am passionate about my mission, <b>When</b> you should reach out for my assistance, and <b>How</b> I transform ideas into amazing digital experiences 😊
         </motion.p>
 
       </div>

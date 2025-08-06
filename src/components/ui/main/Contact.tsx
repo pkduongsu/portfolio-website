@@ -238,7 +238,7 @@ const Contact = () => {
                     <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
                       <Mail className="w-4 h-4 text-primary" />
                     </div>
-                    <span>kimduong.pham03@gmail.com</span>
+                    <span className="hover:font-bold"><a href="mailto:kimduong.pham03@gmail.com">kimduong.pham03@gmail.com</a></span>
                   </div>
                   
                   <div className="flex items-center gap-3 text-muted-foreground">
