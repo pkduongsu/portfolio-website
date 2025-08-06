@@ -10,87 +10,21 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { BookOpen, Sparkles, Lightbulb, User, ExternalLink, PenTool } from 'lucide-react';
 
-const SkillOrb = ({ skill, level, delay = 0 }: { skill: string; level: number; delay?: number }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentLevel, setCurrentLevel] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-      // Animate progress
-      const progressTimer = setTimeout(() => {
-        setCurrentLevel(level);
-      }, 300);
-      return () => clearTimeout(progressTimer);
-    }, delay);
-    return () => clearTimeout(timer);
-  }, [delay, level]);
-
+const SkillHighlight = ({ skill }: { skill: string }) => {
   return (
     <motion.div 
       className="relative group"
-      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-      animate={isVisible ? { opacity: 1, scale: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, type: "spring" }}
+      initial={{ opacity: 0, scale: 0.9, y: 10 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.5, type: "spring" }}
+      whileHover={{ scale: 1.05 }}
     >
-      <Card className="relative overflow-hidden bg-gradient-to-br from-primary/20 to-chart-1/20 border-primary/30 hover:border-chart-1/50 transition-all duration-300 group-hover:scale-110">
-        <CardContent className="p-4">
-          <div className="text-center space-y-3">
-            {/* Skill Name */}
-            <h4 className="font-semibold text-foreground text-sm">{skill}</h4>
-            
-            {/* Circular Progress */}
-            <div className="relative w-16 h-16 mx-auto">
-              <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 36 36">
-                <path
-                  className="text-muted"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="transparent"
-                  d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-                <motion.path
-                  className="text-chart-3"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="transparent"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: currentLevel / 100 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-xs font-bold text-chart-3">{level}%</span>
-              </div>
-            </div>
-            
-            {/* Skill Level Badge */}
-            <Badge 
-              variant="outline" 
-              className={`${
-                level >= 90 ? 'border-chart-2 text-chart-2' :
-                level >= 80 ? 'border-chart-3 text-chart-3' :
-                level >= 70 ? 'border-primary text-primary' :
-                'border-muted-foreground text-muted-foreground'
-              }`}
-            >
-              {level >= 90 ? 'Expert' : level >= 80 ? 'Advanced' : level >= 70 ? 'Proficient' : 'Learning'}
-            </Badge>
-          </div>
-        </CardContent>
-        
-        {/* Hover Effect Particles */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div className="absolute top-2 right-2 w-1 h-1 bg-chart-3 rounded-full animate-ping" />
-          <div className="absolute bottom-2 left-2 w-1 h-1 bg-chart-1 rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
-        </div>
-      </Card>
+      <Badge 
+        variant="secondary" 
+        className="bg-gradient-to-r from-primary/20 to-chart-1/20 text-foreground border-primary/30 hover:border-chart-1/50 transition-all duration-300 px-4 py-2 text-sm font-medium cursor-default"
+      >
+        {skill}
+      </Badge>
     </motion.div>
   );
 };
@@ -99,12 +33,16 @@ const About = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const skills = [
-    { skill: 'React', level: 95, delay: 200 },
-    { skill: 'Node.js', level: 88, delay: 400 },
-    { skill: 'TypeScript', level: 92, delay: 600 },
-    { skill: 'Python', level: 85, delay: 800 },
-    { skill: 'AWS', level: 78, delay: 1000 },
-    { skill: 'MongoDB', level: 82, delay: 1200 },
+    'React',
+    'Node.js', 
+    'TypeScript',
+    'Python',
+    'AWS',
+    'MongoDB',
+    'NextJS',
+    'PostgreSQL',
+    'Docker',
+    'GraphQL'
   ];
 
   useEffect(() => {
@@ -277,20 +215,20 @@ const About = () => {
               <TabsContent value="story" className="space-y-6 mt-6">
                 <Card className="bg-gradient-to-br from-primary/20 to-chart-1/20 border-primary/30">
                   <CardContent className="p-8">
-                    <h3 className="text-3xl font-bold text-foreground mb-6 font-ghibli">From the Human World to Code</h3>
+                    <h3 className="text-3xl font-bold text-foreground mb-6 font-ghibli">From Curiosity to Code</h3>
                     <div className="space-y-4 text-muted-foreground leading-relaxed">
                       <p>
-                        Like Chihiro entering the spirit world, my journey into development began with wonder and 
-                        curiosity. What started as a fascination with creating digital experiences has evolved into 
-                        a passionate pursuit of crafting meaningful solutions.
+                        My journey into development began with wonder and 
+                        curiosity. What started as a fascination with building and exploring, from taking legos pieces apart trying to build my own spacecrafts and figures, messing around with my first computer to become the technical helper around the house for my parents, manifested into
+                        a passionate pursuit of crafting meaningful and technologically efficient solutions.
                       </p>
                       <p>
-                        Through countless late nights debugging (much like working in Yubaba's bathhouse), I've 
+                        Through countless late nights debugging, I have 
                         learned that every challenge is an opportunity to grow stronger. Each project teaches me 
                         something new about the delicate balance between functionality and user experience.
                       </p>
                       <p>
-                        Today, I specialize in full-stack development, bringing ideas to life with modern 
+                        Today, I specialize in full-stack development, along with Agentic AI implementation, bringing fascinating ideas to life with modern 
                         technologies while never forgetting the human element that makes great software truly magical.
                       </p>
                     </div>
@@ -302,10 +240,10 @@ const About = () => {
                       <h4 className="text-xl font-semibold text-foreground mb-4">Key Milestones</h4>
                       <div className="space-y-3">
                         {[
-                          { year: '2022', title: 'Started Web Development', desc: 'First line of code written' },
-                          { year: '2023', title: 'Full Stack Mastery', desc: 'Built first complete application' },
-                          { year: '2024', title: 'Professional Growth', desc: 'Led development team projects' },
-                          { year: '2025', title: 'Current Focus', desc: 'Creating magical user experiences' },
+                          { year: '2019', title: 'Started Coding', desc: 'First line of "Hello World" written in Python' },
+                          { year: '2022', title: 'Started Studying in Australia', desc: 'Moved to Australia to pursue my Bachelor of Computer Science at Swinburne University' },
+                          { year: '2024', title: 'Graduation', desc: 'Graduated at December 2024, majored in Data Science' },
+                          { year: 'Present', title: 'Current Focus', desc: 'Constantly learning about major tech breakthroughs, with a focus in building full stack AI applications.' },
                         ].map((milestone, index) => (
                           <motion.div 
                             key={milestone.year}
@@ -334,12 +272,11 @@ const About = () => {
                   <CardContent className="p-8">
                     <h3 className="text-3xl font-bold text-foreground mb-6 font-ghibli">Collected Powers</h3>
                     <p className="text-muted-foreground mb-8">
-                      Like the spirits in the bathhouse, each skill has its own personality and strength. 
-                      Here are the magical abilities I've gathered on my journey:
+                      Here are the magical abilities I have gathered on my journey:
                     </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                      {skills.map((skill, index) => (
-                        <SkillOrb key={skill.skill} {...skill} />
+                    <div className="flex flex-wrap gap-3 justify-center">
+                      {skills.map((skill) => (
+                        <SkillHighlight key={skill} skill={skill} />
                       ))}
                     </div>
 
@@ -384,19 +321,19 @@ const About = () => {
                         {
                           icon: '🎭',
                           title: 'Authenticity',
-                          description: 'Stay true to your name and values, just as Chihiro never forgot who she was.',
+                          description: 'Stay true to my values and beliefs.',
                           color: 'destructive'
                         },
                         {
                           icon: '🤝',
                           title: 'Collaboration',
-                          description: 'Great software, like great adventures, is built through teamwork and mutual respect.',
+                          description: 'Great products are built through teamwork and mutual respect.',
                           color: 'primary'
                         },
                         {
                           icon: '🌱',
                           title: 'Growth',
-                          description: 'Every challenge is an opportunity to learn and become stronger.',
+                          description: 'Every challenge is an opportunity to learn and become better.',
                           color: 'chart-3'
                         },
                         {
@@ -404,6 +341,12 @@ const About = () => {
                           title: 'Excellence',
                           description: 'Attention to detail and craftsmanship in every line of code.',
                           color: 'chart-2'
+                        },
+                        {
+                          icon: '📖',
+                          title: 'Lifelong learning',
+                          description: 'The world is constantly changing at such a pace that never existed before, so learning is not simply just to adapt and survive, but also to stay ahead of the curve and come out on top despite any upcoming challenges. ',
+                          color: 'chart-1'
                         }
                       ].map((value, index) => (
                         <motion.div 
