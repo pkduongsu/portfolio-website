@@ -34,7 +34,7 @@ const Footer = () => {
           <div>
             <h4 className="text-foreground font-semibold mb-4">Get In Touch</h4>
             <div className="space-y-2 text-muted-foreground">
-              <p>kimduong.pham03@gmail.com</p>
+              <p><a href="mailto:kimduong.pham03@gmail.com">kimduong.pham03@gmail.com</a></p>
               <p>Melbourne, Australia</p>
               <div className="flex gap-4 mt-4">
                 <a href="https://github.com/pkduongsu" className="text-muted-foreground hover:text-destructive transition-colors">
