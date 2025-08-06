@@ -184,8 +184,8 @@ const Contact = () => {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Whether you are looking to build something amazing together, or just want to chat about tech, 
-            I am always excited to connect with fellow creators and learners.
+            Whether you&apos;re looking to build something amazing together, or just want to chat about tech, 
+            I&apos;m always excited to connect with fellow creators and learners.
           </p>
           <Separator className="w-24 h-1 bg-gradient-to-r from-destructive to-primary mx-auto" />
         </motion.div>
