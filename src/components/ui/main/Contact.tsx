@@ -180,7 +180,7 @@ const Contact = () => {
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-6 font-ghibli">
             <span className="bg-gradient-to-r from-destructive via-primary to-chart-1 bg-clip-text text-transparent">
-              Let&apos; s Create Magic Together
+              Let&apos;s Create Magic Together
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
