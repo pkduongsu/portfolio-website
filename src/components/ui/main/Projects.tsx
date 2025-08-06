@@ -7,6 +7,9 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ExternalLink, Github, Star, Filter, Globe, Smartphone, Server } from 'lucide-react';
+import { PROJECTS_LIST } from '@/components/ui/constants/projects-list';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface Project {
   id: number;
@@ -17,7 +20,7 @@ interface Project {
   image: string;
   githubUrl: string;
   liveUrl: string;
-  category: 'web' | 'mobile' | 'fullstack';
+  category: 'web' | 'ai' | 'fullstack';
   featured: boolean;
 }
 
@@ -54,13 +57,22 @@ const ProjectCard = ({ project, index, isVisible }: { project: Project; index: n
         {/* Project Image/Visual */}
         <div className="relative h-48 bg-gradient-to-br from-primary to-chart-1 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-chart-1/80 flex items-center justify-center">
-            <motion.div
-              animate={isHovered ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-primary-foreground"
-            >
-              {getCategoryIcon(project.category)}
-            </motion.div>
+            {(project.image === '') ? 
+              (
+              <motion.div
+                animate={isHovered ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-primary-foreground"
+              >
+               {getCategoryIcon(project.category)}
+              </motion.div> ) : (
+                <Image
+                src={project.image}
+                width={500}
+                height={300}
+                alt="Kode"
+                className="w-full h-full object-cover"
+              />)}
           </div>
           
           {/* Floating Particles on Hover */}
@@ -132,19 +144,25 @@ const ProjectCard = ({ project, index, isVisible }: { project: Project; index: n
         <CardFooter className="pt-0">
           <div className="flex gap-2 w-full">
             <Button 
+              asChild
               size="sm" 
               className="flex-1 bg-gradient-to-r from-primary to-chart-1 hover:from-primary/80 hover:to-chart-1/80 border-0"
             >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Live Demo
+              <Link href={project.liveUrl}>
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Live Demo
+              </Link>
             </Button>
             <Button 
+              asChild
               size="sm" 
               variant="outline" 
               className="border-border text-muted-foreground hover:bg-muted/10"
             >
-              <Github className="w-4 h-4 mr-2" />
-              Code
+              <Link href={project.githubUrl}>
+                <Github className="w-4 h-4 mr-2" />
+                Code
+              </Link>
             </Button>
           </div>
         </CardFooter>
@@ -162,51 +180,14 @@ const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [filter, setFilter] = useState('all');
 
-  // Sample project data
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Spirit Commerce",
-      subtitle: "E-commerce platform for magical goods",
-      description: "A full-stack e-commerce platform built with Next.js and Stripe integration. Features include user authentication, product catalog, shopping cart, and payment processing with a magical twist.",
-      technologies: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL", "Tailwind"],
-      image: "",
-      githubUrl: "https://github.com/yourusername/no-face-chat",
-      liveUrl: "https://no-face-chat.herokuapp.com",
-      category: "web",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Dragon's Analytics",
-      subtitle: "Data visualization dashboard",
-      description: "A comprehensive analytics dashboard for business intelligence with interactive charts, real-time data updates, and customizable reports with mystical data representations.",
-      technologies: ["React", "D3.js", "Python", "FastAPI", "PostgreSQL", "Charts.js"],
-      image: "",
-      githubUrl: "https://github.com/yourusername/dragons-analytics",
-      liveUrl: "https://dragons-analytics.vercel.app",
-      category: "fullstack",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Soot Sprite Deploy",
-      subtitle: "Automated deployment pipeline",
-      description: "A DevOps tool for automated deployment and monitoring of applications with Docker containerization and CI/CD pipeline integration, as efficient as soot sprites.",
-      technologies: ["Docker", "Kubernetes", "Jenkins", "AWS", "Terraform", "Grafana"],
-      image: "",
-      githubUrl: "https://github.com/yourusername/soot-deploy",
-      liveUrl: "https://soot-deploy.aws.com",
-      category: "web",
-      featured: false
-    }
-  ];
+  // Sample project data - can replace with a separate js file 
+  const projects: Project[] = PROJECTS_LIST;
 
   const categories = [
     { id: 'all', label: 'All Projects', icon: <Filter className="w-4 h-4" />, count: projects.length },
     { id: 'fullstack', label: 'Full Stack', icon: <Server className="w-4 h-4" />, count: projects.filter(p => p.category === 'fullstack').length },
     { id: 'web', label: 'Web Apps', icon: <Globe className="w-4 h-4" />, count: projects.filter(p => p.category === 'web').length },
-    { id: 'mobile', label: 'Mobile', icon: <Smartphone className="w-4 h-4" />, count: projects.filter(p => p.category === 'mobile').length },
+    { id: 'ai', label: 'AI', icon: <Smartphone className="w-4 h-4" />, count: projects.filter(p => p.category === 'ai').length },
   ];
 
   const filteredProjects = filter === 'all' 

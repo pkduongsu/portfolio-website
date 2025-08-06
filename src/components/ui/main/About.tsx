@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
-import { BookOpen, Sparkles, Lightbulb, User } from 'lucide-react';
+import { BookOpen, Sparkles, Lightbulb, User, ExternalLink, PenTool } from 'lucide-react';
 
 const SkillOrb = ({ skill, level, delay = 0 }: { skill: string; level: number; delay?: number }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -137,7 +138,7 @@ const About = () => {
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-6 font-ghibli">
             <span className="bg-gradient-to-r from-destructive via-chart-1 to-primary bg-clip-text text-transparent">
-              The Developer's Tale
+              About me
             </span>
           </h2>
           <Separator className="w-24 h-1 bg-gradient-to-r from-destructive to-primary mx-auto" />
@@ -158,7 +159,7 @@ const About = () => {
               <CardContent className="p-8 text-center">
                 <div className="relative mb-6">
                   <Avatar className="w-32 h-32 mx-auto border-4 border-primary/30">
-                    <AvatarImage src="/placeholder-avatar.jpg" alt="Your Name" />
+                    <AvatarImage src="/avatar.png" alt="Kim Pham" />
                     <AvatarFallback className="bg-gradient-to-br from-primary to-chart-1 text-primary-foreground text-2xl">
                       <User className="w-16 h-16" />
                     </AvatarFallback>
@@ -176,12 +177,12 @@ const About = () => {
                   />
                 </div>
                 
-                <h3 className="text-2xl font-bold text-foreground mb-2 font-ghibli">Your Name</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2 font-ghibli">Kim Pham</h3>
                 <p className="text-muted-foreground mb-4">Full Stack Developer</p>
                 
                 <div className="flex flex-wrap justify-center gap-2">
                   <Badge variant="secondary" className="bg-destructive/20 text-destructive border-destructive/30">
-                    🏮 Available for Work
+                    Available for Work
                   </Badge>
                   <Badge variant="secondary" className="bg-chart-3/20 text-chart-3 border-chart-3/30">
                     🌍 Remote Friendly
@@ -213,6 +214,32 @@ const About = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Personal Blog */}
+            <Card className="bg-gradient-to-br from-destructive/20 to-chart-2/20 border-destructive/30">
+              <CardContent className="p-6 text-center">
+                <motion.div
+                  className="mb-4"
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  <PenTool className="w-12 h-12 mx-auto text-destructive" />
+                </motion.div>
+                
+                <h3 className="text-xl font-bold text-foreground mb-2 font-ghibli">Personal Blog</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Sharing thoughts, learnings, and stories along my journey 
+                </p>
+                
+                <Button 
+                  className="w-full bg-gradient-to-r from-destructive to-chart-2 hover:from-destructive/90 hover:to-chart-2/90 text-white shadow-lg"
+                  onClick={() => window.open('https://pkduongsu.github.io/', '_blank')}
+                >
+                  Visit My Blog
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </CardContent>
+            </Card>
           </motion.div>
 
           {/* Right Side - Tabbed Content */}
@@ -236,7 +263,7 @@ const About = () => {
                   className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-destructive data-[state=active]:to-chart-1 data-[state=active]:text-destructive-foreground"
                 >
                   <Sparkles className="w-4 h-4 mr-2" />
-                  Spirit Powers
+                  Tech Stack
                 </TabsTrigger>
                 <TabsTrigger 
                   value="values"

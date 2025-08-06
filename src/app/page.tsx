@@ -1,5 +1,6 @@
 import Hero from "@/components/ui/main/Hero";
 import About from "@/components/ui/main/About";
+import Timeline from "@/components/ui/main/Timeline";
 import Projects from "@/components/ui/main/Projects";
 import Contact from "@/components/ui/main/Contact";
 import { Layout } from "@/components/ui/main/Navigation";
@@ -12,6 +13,9 @@ export default function Home() {
       </div>
       <div id="about-section">
         <About />
+      </div>
+      <div id="timeline-section">
+        <Timeline />
       </div>
       <div id="projects-section">
         <Projects />
