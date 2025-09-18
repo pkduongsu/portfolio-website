@@ -38,6 +38,18 @@ export const PROJECTS_LIST: Project[] = [
     },
     {
       id: 3,
+      title: "Airtable Clone",
+      subtitle: "An exact 1:1 replica of Airtable",
+      description: "Succesfully replicated Airtable table editing interface which support 100k+ records, implemented optimistic UI for table editing, sorting, filtering, search and view features of original Airtable, and optimized virtualized infinite scrolling to render views under 1 second.",
+      technologies: ["TypeScript", "Next.js", "Prisma", "Tailwind", "Vercel"],
+      image: "/airtable.png",
+      githubUrl: "https://github.com/pkduongsu/airtable-clone",
+      liveUrl: "https://airtable-clone-kimpham.vercel.app/",
+      category: "fullstack",
+      featured: true
+    },
+    {
+      id: 4,
       title: "General Asisstant Agent",
       subtitle: "Agentic general purpose AI Assistant",
       description: "This product is part of the Huggingface Agent Course Final Assessment, which involved benchmarking it against the General AI Assistant benchmark - GAIA. Achieved 45% in evaluation (20 random questions of the 1st level-difficulty)",
